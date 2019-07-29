@@ -24,13 +24,25 @@ const myRouter = new Router({
           path: '/home',
           component: getComponent('home', 'index'),
           meta: {
-            title: '首页'
+            title: 'menu.home'
           }
         },{
-          path: '/cricle',
+          path: '/piechart',
           component: getComponent('charts', 'cricle'),
           meta: {
-            title: '饼图'
+            title: 'menu.pieChart'
+          }
+        },{
+          path: '/settings',
+          component: getComponent('settings', 'index'),
+          meta: {
+            title: 'menu.settings'
+          }
+        },{
+          path: '/tty',
+          component: getComponent('tty', 'index'),
+          meta: {
+            title: 'sys.tty'
           }
         },{
           path: '/404',
@@ -50,14 +62,11 @@ const myRouter = new Router({
 //判断是否存在token
 myRouter.beforeEach((to, from, next) => {
   NProgress.start()
-  console.log('路由判定',store.state.token)
-  if (to.path !== '/login' && !store.state.token) {
-    console.log('非法登录',store.state.token)
+  if (to.path !== '/login' && !store.state.user.token) {
     next('/login')
     NProgress.done() // 结束Progress
   } else {
   //权限鉴定
-  console.log('权限鉴定')
   if(to.meta.roles){
     to.meta.roles.includes(...store.getters.roles)?next():next('/404')
   }else{

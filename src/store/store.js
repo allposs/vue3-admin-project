@@ -18,9 +18,10 @@ export default new Vuex.Store({
     reducer(val) {
       return {
         // 只储存state中的token
-        token: val.token,
-        roles: val.roles,
-        tagsList: val.tagsList
+        tagsList: val.tagsList,
+        user:val.user,
+        theme:val.theme,
+        i18n:val.i18n,
       }
     }
   })]

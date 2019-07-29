@@ -1,18 +1,18 @@
 import Mock from 'mockjs';
-Mock.mock('http://localhost:8080/user',{
-    'name': '@name',
-    'email':'@email',
-    'age|1-10': 5,
-    err_code:0,
-});
-Mock.mock('http://localhost:8080/api/v1/user/login','post',{
-    data:{token:"123456"},
-    msg: '登录成功',
-    err_code:0,
-});
 
+Mock.mock('http://localhost:8080/api/v1/user/login','post',{
+    data:{
+        token:"123456",
+        username:"admin",
+        lang: "zh",
+        roles:["admin","body"],
+        image:'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3266090804,66355162&fm=26&gp=0.jpg',
+    },
+    msg: null,
+    code:200,
+});
 Mock.mock('http://localhost:8080/api/v1/user/menu',{
-    err_code:0,
+    code:200,
     data: [{
     icon: "el-icon-document",
     index: "charts",
@@ -22,15 +22,3 @@ Mock.mock('http://localhost:8080/api/v1/user/menu',{
         title: "饼图"
     }]
     }]});
-
-
-//npm install axios-mock-adapter --save-dev
-//import axios from 'axios';
-//import MockAdapter from 'axios-mock-adapter';
-//let mock = new MockAdapter(axios);
-//mock.onPost('/api/v1/user/login').reply(200, {
-//   data:{
-//    token:"123456",
-//   },
-//   msg: 'success'
-//  });

@@ -1,14 +1,22 @@
 {
-    "common": {
-        "home": "Home",
-        "login": "Login",
-        "exit": "Exit"
-    },
-    "sys": {
-        "userMng": "User Manage",
-        "deptMng": "Dept Manage",
-        "roleMng": "Role Manage",
-        "menuMng": "Menu Manage",
-        "logMng": "Log Manage"
-    }
+  "menu": {
+    "chart": "图表",
+    "closeOther": "关闭其它",
+    "fullScreen": "全屏",
+    "home": "首页",
+    "labelOption": "标签选项",
+    "logout": "退出登录",
+    "pieChart": "圆饼图",
+    "settings": "设置",
+    "userSettings": "个人设置"
+  },
+  "sys": {
+    "cancel": "取消",
+    "determine": "确定",
+    "home": "首页",
+    "submit":"提交",
+    "reset":"重置",
+    "title":"后台管理系统",
+    "tty":"命令行"
+  }
 }

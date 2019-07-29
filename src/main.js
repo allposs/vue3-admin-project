@@ -10,7 +10,7 @@ import '@/assets/css/public.css'
 import { messages } from '@/assets/js/common'
 // 引入字体文件
 import '@/assets/icon/iconfont.css'
-import mock from '@/mock/mock'
+require('./mock/mock')
 
 Vue.config.productionTip = false
 //全局挂载提示框
@@ -20,6 +20,5 @@ new Vue({
   router,
   store,
   i18n,
-  mock,
   render: h => h(App)
 }).$mount('#app')

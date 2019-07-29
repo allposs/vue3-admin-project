@@ -1,0 +1,22 @@
+{
+  "menu": {
+    "chart": "Chart",
+    "closeOther": "CloseOther",
+    "fullScreen": "FullScreen",
+    "home": "Home",
+    "labelOption": "LabelOption",
+    "logout": "Logout",
+    "pieChart": "PieChart",
+    "settings": "Settings",
+    "userSettings": "PersonalSettings"
+  },
+  "sys": {
+    "cancel": "Cancel",
+    "determine": "Determine",
+    "home": "Home",
+    "submit":"Submit",
+    "reset":"Reset",
+    "title":"ManagementSystem",
+    "tty":"Terminal"
+  }
+}

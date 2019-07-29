@@ -7,10 +7,15 @@ $base-green:#34A853;
 $base-pink:#E2918C;
 $base-f8:#f8f8f8;
 $base-666:#666;
+$menu-background-color: #324057;
+$menu-selection-background-color:#00c1de;
+$menu-selection-font-color:#fff;
+$menu-font-color:#fff;
 // Aside
 .el-scrollbar {
     height: 100%;
-    border-right: solid 1px #e6e6e6;
+    border-right: solid 1px $menu-background-color;
+    background-color: $menu-background-color;
     .scrollbar-wrapper {
         overflow-x: hidden !important;
         .el-scrollbar__view {
@@ -19,6 +24,30 @@ $base-666:#666;
         }
     }
 }
+////子菜单的背景色
+//.el-menu-item {
+//    background-color: #333  !important;
+//}
+////字体颜色
+//.el-aside {
+//    color: #333;
+//}
+////鼠标悬浮时，子菜单的样式
+//.el-menu-item:hover{
+//    outline: 0 !important;
+//    color: #409EFF !important;
+//}
+//.el-menu-item.is-active {
+//    color: #fff !important;
+//    background: #409EFF !important;
+//}
+////鼠标悬浮时，主菜单的样式：
+//.el-submenu__title:focus, .el-submenu__title:hover{
+//    outline: 0 !important;
+//    color: #409EFF !important;
+//    background: none !important;
+//}
+
 .el-menu {
     border-right: 0;
 }

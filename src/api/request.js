@@ -8,6 +8,7 @@ import store from '@/store/store'
 axios.defaults.timeout = 60000;
 axios.defaults.responseType='json';
 axios.defaults.data={};
+axios.defaults.baseURL = `${window.location.origin}`;
 axios.defaults.withCredentials=true;
 axios.defaults.headers.post["Content-Type"] =
     "application/x-www-form-urlencoded;application/json;charset=UTF-8";
@@ -34,6 +35,11 @@ axios.interceptors.request.use(
 /*
  *请求响应拦截
  *用于处理数据返回后的操作
+ *200 通过
+ *500 服务器内部错误
+ *404 未找到远程服务器
+ *401 用户登陆过期
+ *400 数据异常
  */
 axios.interceptors.response.use(
     response => {
@@ -43,7 +49,7 @@ axios.interceptors.response.use(
                 loading.close();
             }
             const res = response.data;
-            if (res.err_code === 0) {
+            if (res.code === 200) {
                 resolve(res)
             } else{
                 reject(res)
@@ -59,11 +65,9 @@ axios.interceptors.response.use(
         if (!error.response) {
             //请求超时
             if (error.message.includes("timeout")) {
-                console.log("超时了");
                 messages("error", "请求超时，请检查互联网连接");
             } else {
                 //断网，可以展示断网组件
-                console.log("断网了");
                 messages("error", "请检查网络是否已连接");
             }
             return;
@@ -136,7 +140,6 @@ export function post(url, params) {
             });
     });
 }
-
 export default {
     getMockData(url,params){
         return fetch(url,params)
