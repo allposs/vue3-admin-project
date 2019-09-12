@@ -5,19 +5,19 @@
       :v-loading="loading" :max-height="maxHeight" :size="size" :align="align" style="width:100%;" >
       <el-table-column type="selection" width="40"></el-table-column>
       <el-table-column v-for="column in columns" 
-        :prop="column.prop" :label="column.label" :width="column.width" :min-width="column.minWidth" 
+        :prop="column.prop" :label="$t(column.label)" :width="column.width" :min-width="column.minWidth" 
         :sortable="column.sortable" :fixed="column.fixed" :key="column.prop" :type="column.type">
       </el-table-column>
-      <el-table-column label="操作" width="150" fixed="right">
+      <el-table-column  :label="$t('table.operating')" width="180" fixed="right">
         <template slot-scope="scope">
-          <kt-button label="编辑" :perms="permsEdit" :size="size" @click="handleEdit(scope.$index, scope.row)" />
-          <kt-button label="删除" :perms="permsDelete" :size="size" type="danger" @click="handleDelete(scope.$index, scope.row)" />
+          <vap-button :label="$t('button.edit')" :perms="permsEdit" :size="size" @click="handleEdit(scope.$index, scope.row)" />
+          <vap-button :label="$t('button.del')" :perms="permsDelete" :size="size" type="danger" @click="handleDelete(scope.$index, scope.row)" />
         </template>
       </el-table-column>
     </el-table>
     <!--分页栏-->
     <div class="toolbar" style="padding:10px;">
-      <kt-button label="批量删除" :perms="permsDelete" :size="size" type="danger" @click="handleBatchDelete()" 
+      <vap-button :label="$t('button.permsDelete')" :perms="permsDelete" :size="size" type="danger" @click="handleBatchDelete()" 
         :disabled="this.selections.length===0" style="float:left;"/>
       <el-pagination layout="total, prev, pager, next, jumper" @current-change="refreshPageRequest" 
         :current-page="pageRequest.pageNum" :page-size="pageRequest.pageSize" :total="data.totalSize" style="float:right;">
@@ -27,11 +27,11 @@
 </template>
 
 <script>
-import KtButton from "./KtButton"
+import VapButton from "./VapButton"
 export default {
-  name: 'KtTable',
+  name: 'VapTable',
   components:{
-            KtButton
+            VapButton
     },
   props: {
     columns: Array, // 表格列配置
@@ -72,25 +72,25 @@ export default {
             this.selections = selections
     },
     // 换页刷新
-        refreshPageRequest: function (pageNum) {
+    refreshPageRequest: function (pageNum) {
       this.pageRequest.pageNum = pageNum
       this.findPage()
     },
     // 编辑
-        handleEdit: function (index, row) {
+    handleEdit: function (index, row) {
       this.$emit('handleEdit', {index:index, row:row})
         },
     // 删除
-        handleDelete: function (index, row) {
+    handleDelete: function (index, row) {
             this.delete(row.id)
         },
-        // 批量删除
-        handleBatchDelete: function () {
+    // 批量删除
+    handleBatchDelete: function () {
             let ids = this.selections.map(item => item.id).toString()
             this.delete(ids)
         },
-        // 删除操作
-        delete: function (ids) {
+    // 删除操作
+    delete: function (ids) {
             this.$confirm('确认删除选中记录吗？', '提示', {
                 type: 'warning'
             }).then(() => {
@@ -100,8 +100,7 @@ export default {
                     params.push({'id':idArray[i]})
         }
         let callback = res => {
-          console.log(res)
-          this.$message({message: '删除成功', type: 'success'})
+          this.$msg("success", res.msg)
           this.findPage()
         }
         this.$emit('handleDelete', {params:params, callback:callback})

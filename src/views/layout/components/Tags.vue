@@ -53,7 +53,7 @@ export default {
     //监听路由变化
     $route(newValue, oldValue) {
       this.setTags(newValue);
-      console.log(oldValue)
+      this.$msg(oldValue)
     }
   },
   methods: {

@@ -35,7 +35,7 @@
             </router-link>
             <el-dropdown-item @click.native="dialogVisible = true" >{{ $t("menu.userSettings") }}</el-dropdown-item>
             <el-dropdown-item divided>
-              <span style="display:block;" @click="logout">{{ $t("menu.logout") }}</span>
+              <span style="display:block;" @click="out">{{ $t("menu.logout") }}</span>
             </el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
@@ -55,6 +55,7 @@
   </div>
 </template>
 <script>
+import { userLogout } from "@/api/api";
 import showAside from "./showAside.vue";
 export default {
   name:'Header',
@@ -81,7 +82,7 @@ export default {
       }
     },
     username(){
-      let username = this.$store.state.user.username
+      let username = this.$store.state.user.name
       return username ? username : this.name;
     },
     userimage(){
@@ -95,7 +96,7 @@ export default {
   },
   methods: {
     changeSettings() {
-      if (this.lang != '' && this.lang != this.$store.state.user.lang){
+      if (this.lang != ''){
         this.$i18n.locale = this.lang
         this.$store.commit('COMMIT_I18N',this.lang)
         this.dialogVisible=false
@@ -107,11 +108,18 @@ export default {
       this.isCollapse = !this.isCollapse;
     },
     // 用户名下拉菜单选择事件
-    logout() {
-      this.$store.commit('TAGES_LIST',[])
-      this.$store.commit('COMMIT_USER',[])
-      this.$router.push("/login");
-      this.$msg("success","注销成功")
+    out() {
+      userLogout()
+             .then(res => {
+              this.$store.commit('TAGES_LIST',[])
+              this.$store.commit('COMMIT_USER',[])
+              this.$store.commit("COMMIT_TOKEN", []);
+              this.$router.push("/login");
+              this.$msg("success",res.msg)
+             })
+             .catch(err => {
+               this.$msg("error", err.msg);
+             });
     },
     // 全屏事件
     handleFullScreen() {

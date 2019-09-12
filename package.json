@@ -48,6 +48,15 @@
       "plugin:vue/essential",
       "eslint:recommended"
     ],
+    "rules": {
+      "no-alert": 0,
+      "no-console": 1,
+      "no-invalid-this": 2,
+      "no-extra-parens": 2,
+      "no-invalid-regexp": 2,
+      "no-extra-semi": 2,
+      "no-mixed-spaces-and-tabs": [2, false]
+    },
     "parserOptions": {
       "parser": "babel-eslint"
     }

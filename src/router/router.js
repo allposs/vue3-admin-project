@@ -19,7 +19,7 @@ const myRouter = new Router({
     },
     {
       path: '/home',
-      component: getComponent('layout', 'Layout'),
+      component: getComponent('layout', 'index'),
       children: [{
           path: '/home',
           component: getComponent('home', 'index'),
@@ -33,10 +33,12 @@ const myRouter = new Router({
             title: 'menu.pieChart'
           }
         },{
-          path: '/settings',
-          component: getComponent('settings', 'index'),
+          path: '/user',
+          component: getComponent('user', 'index'),
           meta: {
-            title: 'menu.settings'
+            icon: 'el-icon-document',
+            title: 'menu.user',
+            
           }
         },{
           path: '/tty',
@@ -59,10 +61,12 @@ const myRouter = new Router({
   ]
 })
 
+
+
 //判断是否存在token
 myRouter.beforeEach((to, from, next) => {
   NProgress.start()
-  if (to.path !== '/login' && !store.state.user.token) {
+  if (to.path !== '/login' && ! store.getters.token) {
     next('/login')
     NProgress.done() // 结束Progress
   } else {
@@ -78,3 +82,8 @@ myRouter.afterEach(() => {
   NProgress.done() // 结束Progress
 })
 export default myRouter
+
+
+
+
+

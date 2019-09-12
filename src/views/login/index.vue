@@ -29,7 +29,7 @@
   </div>
 </template>
 <script>
-import { login } from "@/api/api";
+import { userLogin } from "@/api/api";
 export default {
   name: "login",
   data() {
@@ -66,13 +66,15 @@ export default {
       this.$refs[formName].validate(valid => {
         if (valid) {
           //这里模拟管理员以及用户两种权限,一般的都是登陆后接口传过来
-          login(this.loginForm)
+          userLogin(this.loginForm)
              .then(res => {
                this.$i18n.locale = res.data.lang
+               this.$store.commit("COMMIT_TOKEN", res.token);
                this.$store.commit("COMMIT_USER", res.data);
                this.$router.push({
                  path: "/home"
                });
+               this.$msg("success",res.msg)
              })
              .catch(err => {
                this.$msg("error", err.msg);

@@ -8,7 +8,8 @@
     "logout": "Logout",
     "pieChart": "PieChart",
     "settings": "Settings",
-    "userSettings": "PersonalSettings"
+    "userSettings": "PersonalSettings",
+    "user":"UserSettings"
   },
   "sys": {
     "cancel": "Cancel",
@@ -18,5 +19,45 @@
     "reset":"Reset",
     "title":"ManagementSystem",
     "tty":"Terminal"
+  },
+  "table":{
+    "id":"ID",
+    "add":"Add",
+    "del":"Delete",
+    "serach":"Serach",
+    "edit":"Edit",
+    "name": "Name",
+    "user":"User",
+    "email":"Email",
+    "phone":"Phone",
+    "number":"Number",
+    "role":"Role",
+    "operating":"Operating",
+    "login":"Login",
+    "department":"Department"
+  },
+  "button":{
+    "add":"Add",
+    "del":"Delete",
+    "serach":"Serach",
+    "edit":"Edit",
+    "permsDelete":"PermsDelete"
+  },
+  "dialog":{
+    "operating":"Operating",
+    "cancel": "Cancel",
+    "determine": "Determine",
+    "id":"ID",
+    "pass": "Password",
+    "name": "Name",
+    "user":"User",
+    "email":"Email",
+    "phone":"Phone",
+    "number":"Number",
+    "role":"Role",
+    "lang":"Lang",
+    "login":"Login",
+    "true":"True",
+    "flase":"Flase"
   }
 }

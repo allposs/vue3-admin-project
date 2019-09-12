@@ -16,7 +16,12 @@ export const menu = [{
 {
     icon: "el-icon-news",
     index: "settings",
-    title: "menu.settings"
+    title: "menu.settings",
+    subs: [{
+        index: "user",
+        title: "menu.user",
+        icon: "el-icon-document",
+    }]
 },
 {
     icon: "el-icon-news",

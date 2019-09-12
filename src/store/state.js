@@ -3,6 +3,7 @@ const state = {
     isCollapse: false, //侧边导航是否折叠
     user:{},
     theme:"",
-    i18n:""
+    i18n:"",
+    token: '',
 }
 export default state

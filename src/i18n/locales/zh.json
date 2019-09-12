@@ -8,7 +8,8 @@
     "logout": "退出登录",
     "pieChart": "圆饼图",
     "settings": "设置",
-    "userSettings": "个人设置"
+    "userSettings": "个人设置",
+    "user":"用户管理"
   },
   "sys": {
     "cancel": "取消",
@@ -18,5 +19,45 @@
     "reset":"重置",
     "title":"后台管理系统",
     "tty":"命令行"
+  },
+  "table":{
+    "id":"ID",
+    "add":"新增",
+    "del":"删除",
+    "serach":"查询",
+    "edit":"编辑",
+    "name":"姓名",
+    "user":"登录名",
+    "email":"邮箱",
+    "phone":"手机",
+    "number":"工号",
+    "role":"角色",
+    "operating":"操作",
+    "login":"登录",
+    "department":"部门"
+  },
+  "button":{
+    "add":"新增",
+    "del":"删除",
+    "serach":"查询",
+    "edit":"编辑",
+    "permsDelete":"批量删除"
+  },
+  "dialog":{
+    "operating":"操作",
+    "cancel": "取消",
+    "determine": "确定",
+    "id":"ID",
+    "pass": "密码",
+    "name":"姓名",
+    "user":"登录名",
+    "email":"邮箱",
+    "phone":"手机",
+    "number":"工号",
+    "role":"角色",
+    "lang":"语言",
+    "login":"登录",
+    "true":"是",
+    "flase":"否"
   }
 }
